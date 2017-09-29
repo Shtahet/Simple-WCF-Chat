@@ -10,5 +10,9 @@ namespace WcfServiceConsole
 	[ServiceContract]
 	interface IChatService
 	{
+		[OperationContract]
+		void login(string name);
+		[OperationContract]
+		void logout(string name);
 	}
 }
