@@ -7,12 +7,14 @@ using System.ServiceModel;
 
 namespace WcfServiceConsole
 {
-	[ServiceContract]
+	[ServiceContract(SessionMode = SessionMode.Required)]
 	interface IChatService
 	{
-		[OperationContract]
-		void Login(string name);
-		[OperationContract]
-		void Logout(string name);
+		[OperationContract(IsInitiating = true, IsTerminating = false)]
+		ChatUser Login(string name);
+		[OperationContract(IsOneWay = true, IsInitiating = false, IsTerminating = true)]
+		void Logout(ChatUser name);
+		[OperationContract(IsOneWay = true, IsInitiating = false, IsTerminating = false)]
+		void SendMessage(ChatMessage msg);
 	}
 }
