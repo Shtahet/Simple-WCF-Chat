@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Net;
 
-namespace WcfServiceConsole.DataContracts
+namespace WcfServiceConsole
 {
 	[DataContract]
 	class ChatUser
