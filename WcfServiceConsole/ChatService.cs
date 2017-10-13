@@ -23,19 +23,16 @@ namespace WcfServiceConsole
 			RemoteEndpointMessageProperty endpoint = msgProp[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
 			IPAddress clientAddress = IPAddress.Parse(endpoint.Address);
 
-			//Проверка наличия адреса в списке подключенных
-			var exists = from e in conectedUsers
-						 where e.NetworkAddress == clientAddress
-						 select e;
-
-			//Добавление нового пользователя
-			if (exists.Count() != 0)
+			ChatUser newUser = new ChatUser()
 			{
-				ChatUser newUser = new ChatUser()
-				{
-					NickName = name,
-					NetworkAddress = clientAddress
-				};
+				NickName = name,
+				NetworkAddress = clientAddress
+			};
+
+			//Проверка на существование пользователя
+			if (!conectedUsers.Contains(newUser))
+			{
+				//Добавление пользователя к общему списку
 				conectedUsers.Add(newUser);
 
 				//Добавление канала обратного вызова
@@ -43,12 +40,13 @@ namespace WcfServiceConsole
 				callList.Add(newUser, currCallBack);
 
 				//Логирование подключения
-				Console.WriteLine($"Пользователь {newUser.NickName} (IP:{newUser.NickName}) присоединился к чату");
+				Console.WriteLine($"Пользователь {newUser.NickName} (IP:{newUser.NetworkAddress}) присоединился к чату");
 
 				//Отправка уведомления другим пользователям
 				ChatMessage joinMsg = new ChatMessage()
 				{
-					User = newUser,
+					FromUser = newUser,
+					ToUser = null,
 					Message = $"{newUser.NickName} присоединился к чату",
 					Date = DateTime.Now
 				};
