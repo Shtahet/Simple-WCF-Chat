@@ -11,7 +11,9 @@ namespace WcfServiceConsole
 	class ChatMessage
 	{
 		[DataMember]
-		public ChatUser User { get; set; }
+		public ChatUser FromUser { get; set; }
+		[DataMember]
+		public ChatUser ToUser { get; set; }
 		[DataMember]
 		public string Message { get; set; }
 		[DataMember]
