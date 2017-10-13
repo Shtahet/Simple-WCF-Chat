@@ -26,9 +26,9 @@ namespace WcfServiceConsole
 		void DeliverMessage(ChatMessage msg);
 
 		[OperationContract(IsOneWay = true)]
-		void newUserJoin(ChatUser newUser);
+		void NewUserJoin(ChatUser newUser);
 
 		[OperationContract(IsOneWay = true)]
-		void reciveAllUsers(List<ChatUser> users);
+		void ReciveAllUsers(List<ChatUser> users);
 	}
 }

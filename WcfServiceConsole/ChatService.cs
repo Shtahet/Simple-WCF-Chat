@@ -13,6 +13,8 @@ namespace WcfServiceConsole
 	class ChatService : IChatService
 	{
 		private List<ChatUser> conectedUsers = new List<ChatUser>();
+		private Dictionary<ChatUser, IChatCallbackService> callList = 
+			new Dictionary<ChatUser, IChatCallbackService>();
 		public ChatUser Login(string name)
 		{
 			//Получение IP-адреса клиента
@@ -35,6 +37,10 @@ namespace WcfServiceConsole
 					NetworkAddress = clientAddress
 				};
 				conectedUsers.Add(newUser);
+
+				//Добавление канала обратного вызова
+				IChatCallbackService currCallBack = OperationContext.Current.GetCallbackChannel<IChatCallbackService>();
+				callList.Add(newUser, currCallBack);
 
 				//Логирование подключения
 				Console.WriteLine($"Пользователь {newUser.NickName} (IP:{newUser.NickName}) присоединился к чату");
