@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ecca27a0-3d49-4ccd-9540-92150e6063eb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:8686/ChatServer/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="92266e96-a07d-41c5-98b5-c373cd585f66" SourceId="1" SourceUrl="net.tcp://localhost:8686/ChatServer/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="c951c34b-4864-4915-952c-8ef4fe44a948" SourceId="1" SourceUrl="net.tcp://localhost:8686/ChatServer/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="4c05e5dd-e07b-48c8-a3b4-b45c15ccdb65" SourceId="1" SourceUrl="net.tcp://localhost:8686/ChatServer/mex" />
+    <MetadataFile FileName="WcfServiceConsole.xsd" MetadataType="Schema" ID="36b52616-39ce-4565-9505-16f33a5cdbb6" SourceId="1" SourceUrl="net.tcp://localhost:8686/ChatServer/mex" />
+    <MetadataFile FileName="System.Net.xsd" MetadataType="Schema" ID="6374cc4a-3ae5-4959-a1b0-50f2e27e23e6" SourceId="1" SourceUrl="net.tcp://localhost:8686/ChatServer/mex" />
+    <MetadataFile FileName="System.Net.Sockets.xsd" MetadataType="Schema" ID="c0993343-26ac-4728-96d5-66d35e7ddda8" SourceId="1" SourceUrl="net.tcp://localhost:8686/ChatServer/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="4082a36f-99a3-417b-b5a5-a836b3a9ebcd" SourceId="1" SourceUrl="net.tcp://localhost:8686/ChatServer/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
