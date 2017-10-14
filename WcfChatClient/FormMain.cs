@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,9 @@ namespace WcfChatClient
 		{
 			InitializeComponent();
 
+			//Создание прокси класса с дуплексным контрактом
+			InstanceContext instance = new InstanceContext(this);
+			proxy = new ChatServiceClient(instance);
 		}
 
 		private void FormMain_Load(object sender, EventArgs e)
@@ -32,8 +36,10 @@ namespace WcfChatClient
 			var btn = sender as Button;
 			if (btn.Text == "Connect")
 			{
-				btn.Text = "Disconnect";
-				ConnectTo();
+				if (ConnectTo() == true)
+				{
+					btn.Text = "Disconnect";
+				}
 			}
 			else
 			{
@@ -42,13 +48,20 @@ namespace WcfChatClient
 			}
 
 		}
-		private void ConnectTo()
+		private bool ConnectTo()
 		{
+			//Проверка введенного имени пользователя
 			if (String.IsNullOrEmpty(txtUserName.Text))
 			{
 				MessageBox.Show("Укажите свой никнейм", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				return;
+				return false;
 			}
+
+
+
+			//Отправка запроса на подключение
+			
+			return true;
 		}
 
 		private void DisconnectFrom()
