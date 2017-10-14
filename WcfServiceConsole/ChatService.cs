@@ -52,6 +52,15 @@ namespace WcfServiceConsole
 				};
 				SendMessage(joinMsg);
 
+				//Отправка подключенным пользователям информации о новом
+				foreach (var icall in callList)
+				{
+					if (icall.Key == newUser)
+						continue;
+
+					icall.Value.User(newUser, UserActions.Join);
+				}
+
 				return newUser;
 			}
 			else
