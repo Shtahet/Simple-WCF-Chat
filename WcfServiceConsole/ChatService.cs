@@ -9,7 +9,8 @@ using System.Net;
 
 namespace WcfServiceConsole
 {
-	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
+	[ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
+		ConcurrencyMode = ConcurrencyMode.Multiple)]
 	class ChatService : IChatService
 	{
 		private List<ChatUser> conectedUsers = new List<ChatUser>();
