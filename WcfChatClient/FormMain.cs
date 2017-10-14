@@ -100,6 +100,8 @@ namespace WcfChatClient
 			proxy.SendMessage(newMessage);
 
 			txtMessage.Clear();
+
+			txtChat.AppendText($"\n{myUserObj.NickName}({newMessage.Date.ToShortTimeString()}): {newMessage.Message}");
 		}
 	}
 }
