@@ -65,7 +65,24 @@ namespace WcfChatClient
 
 		private void DisconnectFrom()
 		{
+			proxy.Logout(myUserObj);
+		}
+
+		#region Реализация IChatServiceCallback
+		public void DeliverMessage (ChatMessage newMsg)
+		{
 
 		}
+
+		public void User(ChatUser user, UserActions action)
+		{
+
+		}
+
+		public void ReciveAllUsers(List<ChatUser> users)
+		{
+
+		}
+		#endregion
 	}
 }
