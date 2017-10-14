@@ -14,7 +14,7 @@ namespace WcfChatClient
 {
 	public partial class FormMain : Form, IChatServiceCallback
 	{
-		private ChatUser Iam;
+		private ChatUser myUserObj;
 		ChatServiceClient proxy;
 
 		public FormMain()
@@ -57,9 +57,8 @@ namespace WcfChatClient
 				return false;
 			}
 
-
-
 			//Отправка запроса на подключение
+			myUserObj = proxy.Login(txtUserName.Text);
 			
 			return true;
 		}
