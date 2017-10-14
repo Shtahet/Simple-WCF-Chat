@@ -17,5 +17,10 @@ namespace WcfChatClient
 			InitializeComponent();
 		}
 
+		private void FormMain_Load(object sender, EventArgs e)
+		{
+
+		}
+
 	}
 }
