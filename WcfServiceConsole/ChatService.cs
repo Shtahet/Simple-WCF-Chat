@@ -75,7 +75,26 @@ namespace WcfServiceConsole
 
 		public void Logout(ChatUser name)
 		{
-			throw new NotImplementedException();
+			ChatMessage leaveMsg = new ChatMessage()
+			{
+				FromUser = name,
+				ToUser = null,
+				Message = $"{name.NickName} покинул чат",
+				Date = DateTime.Now
+			};
+			SendMessage(leaveMsg);
+
+			//Удаление пользователя
+			conectedUsers.Remove(name);
+
+			//Удаление callback канала
+			callList.Remove(name);
+			
+			//Отправка маркера о выходе пользователя
+			foreach(var icall in callList)
+			{
+				icall.Value.User(name, UserActions.Left);
+			}
 		}
 
 		public void SendMessage(ChatMessage msg)
