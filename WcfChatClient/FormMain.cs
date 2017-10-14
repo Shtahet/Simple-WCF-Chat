@@ -34,13 +34,18 @@ namespace WcfChatClient
 				if (ConnectTo() == true)
 				{
 					btn.Text = "Disconnect";
-
+					txtUserName.Enabled = false;
+					txtMessage.Enabled = true;
+					btnSend.Enabled = true;
 				}
 			}
 			else
 			{
 				btn.Text = "Connect";
 				DisconnectFrom();
+				txtUserName.Enabled = true;
+				txtMessage.Enabled = false;
+				btnSend.Enabled = false;
 			}
 
 		}
