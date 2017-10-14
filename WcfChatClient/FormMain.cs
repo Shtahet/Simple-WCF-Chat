@@ -26,11 +26,6 @@ namespace WcfChatClient
 			proxy = new ChatServiceClient(instance);
 		}
 
-		private void FormMain_Load(object sender, EventArgs e)
-		{
-
-		}
-
 		private void btnConnect_Click(object sender, EventArgs e)
 		{
 			var btn = sender as Button;
@@ -39,6 +34,7 @@ namespace WcfChatClient
 				if (ConnectTo() == true)
 				{
 					btn.Text = "Disconnect";
+
 				}
 			}
 			else
@@ -84,5 +80,21 @@ namespace WcfChatClient
 
 		}
 		#endregion
+
+		private void btnSend_Click(object sender, EventArgs e)
+		{
+			//Отправка сообщения
+			ChatMessage newMessage = new ChatMessage()
+			{
+				FromUser = myUserObj,
+				ToUser = null,
+				Message = txtMessage.Text,
+				Date = DateTime.Now
+			};
+
+			proxy.SendMessage(newMessage);
+
+			txtMessage.Clear();
+		}
 	}
 }

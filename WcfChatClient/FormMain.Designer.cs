@@ -148,6 +148,7 @@
 			this.btnSend.TabIndex = 10;
 			this.btnSend.Text = "SEND";
 			this.btnSend.UseVisualStyleBackColor = true;
+			this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
 			// 
 			// lbAboutSend
 			// 
@@ -209,7 +210,6 @@
 			this.MainMenuStrip = this.mainMenu;
 			this.Name = "FormMain";
 			this.Text = "Чат";
-			this.Load += new System.EventHandler(this.FormMain_Load);
 			this.mainMenu.ResumeLayout(false);
 			this.mainMenu.PerformLayout();
 			this.statusStrip1.ResumeLayout(false);
