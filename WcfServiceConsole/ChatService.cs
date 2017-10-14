@@ -76,7 +76,23 @@ namespace WcfServiceConsole
 
 		public void SendMessage(ChatMessage msg)
 		{
-			throw new NotImplementedException();
+			//Если есть адресат
+			if (msg.ToUser != null)
+			{
+				//Доставка сообщения адресату
+				callList[msg.ToUser].DeliverMessage(msg);
+			}
+			else
+			{
+				//Доставка сообщения всем
+				foreach (var icall in callList)
+				{
+					if (icall.Key == msg.FromUser)
+						continue;
+
+					icall.Value.DeliverMessage(msg);
+				}
+			}
 		}
 	}
 }
