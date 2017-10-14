@@ -16,6 +16,7 @@ namespace WcfServiceConsole
 
 			Console.WriteLine("Сервер чата запущен...");
 			Console.WriteLine("Для завершения нажмите Enter");
+			Console.ReadLine();
 
 			host.Close();
 		}
