@@ -32,9 +32,7 @@ namespace WcfServiceConsole
 			//Проверка на существование пользователя
 			if (!conectedUsers.Contains(newUser))
 			{
-				//Добавление пользователя к общему списку
-				conectedUsers.Add(newUser);
-
+				
 				//Добавление канала обратного вызова
 				IChatCallbackService currCallBack = OperationContext.Current.GetCallbackChannel<IChatCallbackService>();
 				callList.Add(newUser, currCallBack);
@@ -60,6 +58,12 @@ namespace WcfServiceConsole
 
 					icall.Value.User(newUser, UserActions.Join);
 				}
+
+				//Отправка списка активных пользователей новому
+				currCallBack.ReciveAllUsers(conectedUsers);
+
+				//Добавление пользователя к общему списку
+				conectedUsers.Add(newUser);
 
 				return newUser;
 			}
